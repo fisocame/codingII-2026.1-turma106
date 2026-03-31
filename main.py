@@ -1,17 +1,17 @@
 from models.produtos import Produto
+from models.produtos import ProdutoPerecivel
+from models.produtos import ProdutoDigital
 from services.estoque import Estoque
 
 estoque = Estoque()
 
-p1 = Produto("Mouse", 10)
-p2 = Produto("Teclado", 5)
+produto1 = Produto("Mouse", 10)
+produto2 = ProdutoPerecivel("Batata", 5)
+produto3 = ProdutoDigital("Ebook", 8)
 
-estoque.adicionar_produto(p1)
-estoque.adicionar_produto(p2)
+estoque.adicionar_produto(produto1)
+estoque.adicionar_produto(produto2)
+estoque.adicionar_produto(produto3)
 
-produto_encontrado = estoque.buscar_produto("Mouse")
+estoque.listar_produtos()
 
-if produto_encontrado:
-    print("Produto encontrado:", produto_encontrado.nome, produto_encontrado.quantidade)
-else:
-    print("Produto não encontrado")
