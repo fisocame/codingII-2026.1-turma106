@@ -1,17 +1,16 @@
-from models.produtos import Produto
-from models.produtos import ProdutoPerecivel
-from models.produtos import ProdutoDigital
-from services.estoque import Estoque
+from services.estoque import executar_rota
 
-estoque = Estoque()
+print(executar_rota("/produtos", "POST", {"nome": "PI do 5 período", "quantidade": 1}))
+print(executar_rota("/produtos", "POST", {"nome": "PI do 2 período", "quantidade": 3}))
 
-produto1 = Produto("Mouse", 10)
-produto2 = ProdutoPerecivel("Batata", 5)
-produto3 = ProdutoDigital("Ebook", 8)
+print(executar_rota("/produtos", "GET"))
 
-estoque.adicionar_produto(produto1)
-estoque.adicionar_produto(produto2)
-estoque.adicionar_produto(produto3)
+print(executar_rota("/produtos/buscar", "GET", {"nome": "PI do 5 período"}))
 
-estoque.listar_produtos()
+print(executar_rota("/produtos/atualizar", "PUT", {"nome": "PI do 5 período", "quantidade": 2}))
 
+print(executar_rota("/produtos", "GET"))
+
+print(executar_rota("/produtos/deletar", "DELETE", {"nome": "PI do 5 período"}))
+
+print(executar_rota("/produtos", "GET"))
